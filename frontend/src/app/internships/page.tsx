@@ -21,7 +21,7 @@ export default function page() {
 
   return (
     <div className="w-5xl mx-auto px-4 py-8 space-y-6">
-      <Button>Upload Resume</Button>
+      <Button>{t('page.uploadResume')}</Button>
       {/* Language Toggle */}
       <div className="flex justify-end mb-4">
         <div className="flex gap-2">

@@ -8,7 +8,8 @@
       "title": "AI-Powered Internship Recommendations",
       "subtitle": "Get personalized internship suggestions based on your skills and preferences",
       "languageEnglish": "English",
-      "languageHindi": "हिंदी"
+      "languageHindi": "हिंदी",
+      "uploadResume": "Upload Resume"
     },
     "filter": {
       "location": "Location",
@@ -97,7 +98,8 @@
       "title": "एआई-संचालित इंटर्नशिप सुझाव",
       "subtitle": "अपनी कौशल और प्राथमिकताओं के आधार पर व्यक्तिगत इंटर्नशिप सुझाव प्राप्त करें",
       "languageEnglish": "English",
-      "languageHindi": "हिंदी"
+      "languageHindi": "हिंदी",
+      "uploadResume": "रिज्यूम अपलोड करें"
     },
     "filter": {
       "location": "स्थान",
