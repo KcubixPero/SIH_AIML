@@ -20,6 +20,7 @@ import { Button } from './ui/button'
 import { XIcon, Search, Loader2 } from 'lucide-react'
 import { useTranslation } from '@/lib/useTranslation'
 import translations from '@/lib/translations.json'
+import { createTranslationFunction } from '@/lib/utils'
 
 interface FilterProps {
   onRecommendations: (recommendations: any[]) => void;
@@ -35,7 +36,10 @@ export const Filter = ({ onRecommendations, onLoading, language }: FilterProps) 
   const [availableLocations, setAvailableLocations] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [modelType, setModelType] = useState<'tfidf' | 'ann'>('tfidf');
-  const { t } = useTranslation(language);
+  const { t: tBase } = useTranslation();
+  
+  // Create a translation function that uses the passed language
+  const t = createTranslationFunction(language);
 
   // Use translated skills and locations
   useEffect(() => {
@@ -152,7 +156,8 @@ interface SkillsSelectProps {
 }
 
 const SkillsSelect = ({ selectedSkills, onSkillsChange, availableSkills, language }: SkillsSelectProps) => {
-  const { t } = useTranslation(language);
+  // Create a translation function that uses the passed language
+  const t = createTranslationFunction(language);
   const handleSkillSelect = (skill: string) => {
     if (selectedSkills.includes(skill)) {
       onSkillsChange(selectedSkills.filter((s) => s !== skill));
@@ -213,61 +218,4 @@ const SkillsSelect = ({ selectedSkills, onSkillsChange, availableSkills, languag
   )
 }
 
-const SelectBox = ({ filter }: { filter: string }) => (
-  <Select>
-    <SelectTrigger className="w-[180px] min-h-10">
-      <SelectValue placeholder={filter[0].toUpperCase() + filter.substring(1)} />
-    </SelectTrigger>
-    <SelectContent>
-      {
-        filters[filter].map(f => (
-          <SelectItem key={f} value={f}>{f}</SelectItem>
-        ))
-      }
-    </SelectContent>
-  </Select>
-)
-
-const filters: {
-  [key: string]: string[]
-} = {
-  location: [
-    "Remote",
-    "Bangalore",
-    "Hyderabad",
-    "Mumbai",
-    "Delhi",
-    "Chennai",
-    "Pune",
-    "Gurgaon",
-    "Kolkata"
-  ],
-  duration: [
-    "1 month",
-    "3 months",
-    "6 months"
-  ]
-}
-
-const skills = [
-  "JavaScript",
-  "React",
-  "Node.js",
-  "Problem Solving",
-  "Python",
-  "Pandas",
-  "Machine Learning",
-  "Statistics",
-  "Figma",
-  "UI/UX",
-  "Prototyping",
-  "Creativity",
-  "Content Writing",
-  "SEO",
-  "Social Media",
-  "Analytics",
-  "Networking",
-  "Security Tools",
-  "Linux",
-  "Attention to Detail"
-];
+ 

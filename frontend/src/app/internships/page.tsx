@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Filter } from "@/components/Filter";
 import { Internships } from "@/components/Internships";
 import { useTranslation } from "@/lib/useTranslation";
+import { Button } from '@/components/ui/button';
 
 export default function page() {
   const [recommendations, setRecommendations] = useState<any[]>([]);
@@ -19,7 +20,8 @@ export default function page() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8 space-y-6">
+    <div className="w-5xl mx-auto px-4 py-8 space-y-6">
+      <Button>Upload Resume</Button>
       {/* Language Toggle */}
       <div className="flex justify-end mb-4">
         <div className="flex gap-2">

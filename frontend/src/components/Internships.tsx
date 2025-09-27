@@ -1,6 +1,8 @@
 import React from 'react'
 import { Intern, JobCard } from './JobCard';
 import { useTranslation } from '@/lib/useTranslation';
+import translations from '@/lib/translations.json';
+import { createTranslationFunction } from '@/lib/utils';
 
 interface InternshipsProps {
   recommendations: any[];
@@ -9,7 +11,8 @@ interface InternshipsProps {
 }
 
 export const Internships = ({ recommendations, isLoading, language }: InternshipsProps) => {
-  const { t } = useTranslation(language);
+  // Create a translation function that uses the passed language
+  const t = createTranslationFunction(language);
   if (isLoading) {
     return (
       <div className="space-y-4 w-5xl">
@@ -40,7 +43,7 @@ export const Internships = ({ recommendations, isLoading, language }: Internship
       {
         recommendations.slice(0, 5).map((rec, index) => (
           <JobCard 
-            intern={convertRecommendationToIntern(rec)} 
+            intern={convertRecommendationToIntern(rec, language)} 
             key={`${rec.job_title || rec.role}-${index}`} 
             recommendation={rec}
             language={language}
@@ -52,12 +55,14 @@ export const Internships = ({ recommendations, isLoading, language }: Internship
 }
 
 // Convert API recommendation to Intern format
-const convertRecommendationToIntern = (rec: any): Intern => {
+const convertRecommendationToIntern = (rec: any, language: 'en' | 'hi' = 'en'): Intern => {
+  // Create a translation function that uses the passed language
+  const t = createTranslationFunction(language);
   return {
-    title: rec.job_title || rec.role || 'Internship Position',
+    title: rec.job_title || rec.role || t('jobCard.defaultTitle'),
     description: rec.description || `Great opportunity at ${rec.company || 'a leading company'}`,
     skills: rec.skills || rec.matched_skills || [],
-    company: rec.company || 'Company',
+    company: rec.company || t('jobCard.defaultCompany'),
     logo: undefined, // Could be added later
     // Additional fields from ML model
     similarity_score: rec.similarity_score,

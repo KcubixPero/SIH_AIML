@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import React from 'react'
 import { useTranslation } from '@/lib/useTranslation';
+import translations from '@/lib/translations.json';
+import { createTranslationFunction } from '@/lib/utils';
 
 export interface Intern {
   title: string;
@@ -24,7 +26,8 @@ interface JobCardProps {
 }
 
 export const JobCard = ({ intern, recommendation, language = 'en' }: JobCardProps) => {
-  const { t } = useTranslation(language);
+  // Create a translation function that uses the passed language
+  const t = createTranslationFunction(language);
   return (
     <div className="shadow-faded border border-border p-6 rounded-lg bg-card hover:shadow-lg transition-shadow max-w-3/5 mx-auto">
       <div className="flex justify-between items-start gap-4">

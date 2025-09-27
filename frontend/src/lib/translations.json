@@ -1,5 +1,9 @@
 {
   "en": {
+    "metadata": {
+      "title": "PM Internship",
+      "description": "PM Internships"
+    },
     "page": {
       "title": "AI-Powered Internship Recommendations",
       "subtitle": "Get personalized internship suggestions based on your skills and preferences",
@@ -37,7 +41,9 @@
       "companyEmoji": "🏢",
       "locationEmoji": "📍",
       "stipendEmoji": "💰",
-      "durationEmoji": "⏳"
+      "durationEmoji": "⏳",
+      "defaultTitle": "Internship Position",
+      "defaultCompany": "Company"
     },
     "models": {
       "tfidf": "TF-IDF",
@@ -83,8 +89,12 @@
     ]
   },
   "hi": {
+    "metadata": {
+      "title": "PM इंटर्नशिप",
+      "description": "PM इंटर्नशिप"
+    },
     "page": {
-      "title": "AI-संचालित इंटर्नशिप सुझाव",
+      "title": "एआई-संचालित इंटर्नशिप सुझाव",
       "subtitle": "अपनी कौशल और प्राथमिकताओं के आधार पर व्यक्तिगत इंटर्नशिप सुझाव प्राप्त करें",
       "languageEnglish": "English",
       "languageHindi": "हिंदी"
@@ -120,7 +130,9 @@
       "companyEmoji": "🏢",
       "locationEmoji": "📍",
       "stipendEmoji": "💰",
-      "durationEmoji": "⏳"
+      "durationEmoji": "⏳",
+      "defaultTitle": "इंटर्नशिप पद",
+      "defaultCompany": "कंपनी"
     },
     "models": {
       "tfidf": "TF-IDF",
