@@ -18,13 +18,16 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from './ui/button'
 import { XIcon, Search, Loader2 } from 'lucide-react'
+import { useTranslation } from '@/lib/useTranslation'
+import translations from '@/lib/translations.json'
 
 interface FilterProps {
   onRecommendations: (recommendations: any[]) => void;
   onLoading: (loading: boolean) => void;
+  language: 'en' | 'hi';
 }
 
-export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
+export const Filter = ({ onRecommendations, onLoading, language }: FilterProps) => {
   const [selectedLocation, setSelectedLocation] = useState<string>("");
   const [selectedDuration, setSelectedDuration] = useState<string>("");
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
@@ -32,16 +35,17 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
   const [availableLocations, setAvailableLocations] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [modelType, setModelType] = useState<'tfidf' | 'ann'>('tfidf');
+  const { t } = useTranslation(language);
 
-  // Use hardcoded skills and locations
+  // Use translated skills and locations
   useEffect(() => {
-    setAvailableSkills(skills);
-    setAvailableLocations(filters.location);
-  }, []);
+    setAvailableSkills(translations[language].skills);
+    setAvailableLocations(translations[language].locations);
+  }, [language]);
 
   const handleGetRecommendations = async () => {
     if (selectedSkills.length === 0) {
-      alert('Please select at least one skill');
+      alert(t('filter.selectAtLeastOneSkill'));
       return;
     }
 
@@ -71,11 +75,11 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
       } else {
         const errorData = await response.json();
         console.error('API Error:', errorData);
-        alert('Error getting recommendations: ' + (errorData.error || 'Unknown error'));
+        alert(t('filter.errorGettingRecommendations') + ' ' + (errorData.error || t('filter.unknownError')));
       }
     } catch (error) {
       console.error('Network Error:', error);
-      alert('Network error. Make sure the backend server is running on port 5000.');
+      alert(t('filter.networkError'));
     } finally {
       setIsLoading(false);
       onLoading(false);
@@ -87,7 +91,7 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
       <div className="flex gap-4 mb-6">
         <Select value={selectedLocation} onValueChange={setSelectedLocation}>
           <SelectTrigger className="w-[180px] min-h-10">
-            <SelectValue placeholder="Location" />
+            <SelectValue placeholder={t('filter.location')} />
           </SelectTrigger>
           <SelectContent>
             {availableLocations.map(loc => (
@@ -98,10 +102,10 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
 
         <Select value={selectedDuration} onValueChange={setSelectedDuration}>
           <SelectTrigger className="w-[180px] min-h-10">
-            <SelectValue placeholder="Duration" />
+            <SelectValue placeholder={t('filter.duration')} />
           </SelectTrigger>
           <SelectContent>
-            {filters.duration.map(d => (
+            {translations[language].durations.map(d => (
               <SelectItem key={d} value={d}>{d}</SelectItem>
             ))}
           </SelectContent>
@@ -112,6 +116,7 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
             selectedSkills={selectedSkills}
             onSkillsChange={setSelectedSkills}
             availableSkills={availableSkills}
+            language={language}
           />
         </div>
       </div>
@@ -125,12 +130,12 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Getting Recommendations...
+              {t('filter.gettingRecommendations')}
             </>
           ) : (
             <>
               <Search className="mr-2 h-4 w-4" />
-              Get Recommendations
+              {t('filter.getRecommendations')}
             </>
           )}
         </Button>
@@ -143,9 +148,11 @@ interface SkillsSelectProps {
   selectedSkills: string[];
   onSkillsChange: (skills: string[]) => void;
   availableSkills: string[];
+  language: 'en' | 'hi';
 }
 
-const SkillsSelect = ({ selectedSkills, onSkillsChange, availableSkills }: SkillsSelectProps) => {
+const SkillsSelect = ({ selectedSkills, onSkillsChange, availableSkills, language }: SkillsSelectProps) => {
+  const { t } = useTranslation(language);
   const handleSkillSelect = (skill: string) => {
     if (selectedSkills.includes(skill)) {
       onSkillsChange(selectedSkills.filter((s) => s !== skill));
@@ -175,16 +182,16 @@ const SkillsSelect = ({ selectedSkills, onSkillsChange, availableSkills }: Skill
           ))
         }
         {selectedSkills.length === 0 && (
-          <span className="text-muted-foreground text-sm">No skills selected</span>
+          <span className="text-muted-foreground text-sm">{t('filter.noSkillsSelected')}</span>
         )}
       </div>
 
       <DropdownMenu>
         <DropdownMenuTrigger className="px-3 py-1.5 max-h-10 rounded-lg border border-border shadow-faded text-sm bg-background hover:bg-accent hover:text-accent-foreground transition-colors">
-          Select skills
+          {t('filter.selectSkills')}
         </DropdownMenuTrigger>
         <DropdownMenuContent className="max-h-[18rem] w-[200px]">
-          <DropdownMenuLabel>Select Skills</DropdownMenuLabel>
+          <DropdownMenuLabel>{t('filter.selectSkills')}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           {
             availableSkills.map(s => (

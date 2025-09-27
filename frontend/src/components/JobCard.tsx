@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react'
+import { useTranslation } from '@/lib/useTranslation';
 
 export interface Intern {
   title: string;
@@ -19,9 +20,11 @@ export interface Intern {
 interface JobCardProps {
   intern: Intern;
   recommendation?: any;
+  language?: 'en' | 'hi';
 }
 
-export const JobCard = ({ intern, recommendation }: JobCardProps) => {
+export const JobCard = ({ intern, recommendation, language = 'en' }: JobCardProps) => {
+  const { t } = useTranslation(language);
   return (
     <div className="shadow-faded border border-border p-6 rounded-lg bg-card hover:shadow-lg transition-shadow max-w-3/5 mx-auto">
       <div className="flex justify-between items-start gap-4">
@@ -34,15 +37,15 @@ export const JobCard = ({ intern, recommendation }: JobCardProps) => {
           
           {/* Company and Location Info */}
           <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-            <span>🏢 {intern.company}</span>
-            {intern.location && <span>📍 {intern.location}</span>}
-            {intern.stipend && <span>💰 {intern.stipend}</span>}
-            {intern.duration && <span>⏳ {intern.duration}</span>}
+            <span>{t('jobCard.companyEmoji')} {intern.company}</span>
+            {intern.location && <span>{t('jobCard.locationEmoji')} {intern.location}</span>}
+            {intern.stipend && <span>{t('jobCard.stipendEmoji')} {intern.stipend}</span>}
+            {intern.duration && <span>{t('jobCard.durationEmoji')} {intern.duration}</span>}
           </div>
 
           {/* Skills Section */}
           <div className="mb-3">
-            <h4 className="text-sm font-medium text-card-foreground mb-2">Required Skills:</h4>
+            <h4 className="text-sm font-medium text-card-foreground mb-2">{t('internships.requiredSkills')}</h4>
             <div className="flex flex-wrap gap-2">
               {intern.skills.map((skill, index) => (
                 <span 
@@ -58,7 +61,7 @@ export const JobCard = ({ intern, recommendation }: JobCardProps) => {
           {/* Missing Skills (if available) */}
           {intern.missing_skills && intern.missing_skills.length > 0 && (
             <div className="mb-3">
-              <h4 className="text-sm font-medium text-orange-600 mb-2">Skills to Learn:</h4>
+              <h4 className="text-sm font-medium text-orange-600 mb-2">{t('internships.skillsToLearn')}</h4>
               <div className="flex flex-wrap gap-2">
                 {intern.missing_skills.map((skill, index) => (
                   <span 

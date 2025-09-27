@@ -1,0 +1,168 @@
+{
+  "en": {
+    "page": {
+      "title": "AI-Powered Internship Recommendations",
+      "subtitle": "Get personalized internship suggestions based on your skills and preferences",
+      "languageEnglish": "English",
+      "languageHindi": "हिंदी"
+    },
+    "filter": {
+      "location": "Location",
+      "duration": "Duration",
+      "model": "Model",
+      "selectSkills": "Select skills",
+      "noSkillsSelected": "No skills selected",
+      "getRecommendations": "Get Recommendations",
+      "gettingRecommendations": "Getting Recommendations...",
+      "selectAtLeastOneSkill": "Please select at least one skill",
+      "errorGettingRecommendations": "Error getting recommendations:",
+      "networkError": "Network error. Make sure the backend server is running on port 5000.",
+      "unknownError": "Unknown error"
+    },
+    "internships": {
+      "title": "Recommended Internships",
+      "found": "Found {count} matching opportunities",
+      "noRecommendations": "No recommendations yet. Select your skills and click \"Get Recommendations\" to see personalized internship suggestions.",
+      "loading": "Loading recommendations...",
+      "requiredSkills": "Required Skills:",
+      "skillsToLearn": "Skills to Learn:",
+      "match": "{score}% match",
+      "score": "Score: {score}%"
+    },
+    "jobCard": {
+      "company": "Company",
+      "location": "Location",
+      "stipend": "Stipend",
+      "duration": "Duration",
+      "companyEmoji": "🏢",
+      "locationEmoji": "📍",
+      "stipendEmoji": "💰",
+      "durationEmoji": "⏳"
+    },
+    "models": {
+      "tfidf": "TF-IDF",
+      "ann": "ANN"
+    },
+    "skills": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Problem Solving",
+      "Python",
+      "Pandas",
+      "Machine Learning",
+      "Statistics",
+      "Figma",
+      "UI/UX",
+      "Prototyping",
+      "Creativity",
+      "Content Writing",
+      "SEO",
+      "Social Media",
+      "Analytics",
+      "Networking",
+      "Security Tools",
+      "Linux",
+      "Attention to Detail"
+    ],
+    "locations": [
+      "Remote",
+      "Bangalore",
+      "Hyderabad",
+      "Mumbai",
+      "Delhi",
+      "Chennai",
+      "Pune",
+      "Gurgaon",
+      "Kolkata"
+    ],
+    "durations": [
+      "1 month",
+      "3 months",
+      "6 months"
+    ]
+  },
+  "hi": {
+    "page": {
+      "title": "AI-संचालित इंटर्नशिप सुझाव",
+      "subtitle": "अपनी कौशल और प्राथमिकताओं के आधार पर व्यक्तिगत इंटर्नशिप सुझाव प्राप्त करें",
+      "languageEnglish": "English",
+      "languageHindi": "हिंदी"
+    },
+    "filter": {
+      "location": "स्थान",
+      "duration": "अवधि",
+      "model": "मॉडल",
+      "selectSkills": "कौशल चुनें",
+      "noSkillsSelected": "कोई कौशल नहीं चुना गया",
+      "getRecommendations": "सुझाव प्राप्त करें",
+      "gettingRecommendations": "सुझाव प्राप्त हो रहे हैं...",
+      "selectAtLeastOneSkill": "कृपया कम से कम एक कौशल चुनें",
+      "errorGettingRecommendations": "सुझाव प्राप्त करने में त्रुटि:",
+      "networkError": "नेटवर्क त्रुटि। कृपया सुनिश्चित करें कि बैकएंड सर्वर पोर्ट 5000 पर चल रहा है।",
+      "unknownError": "अज्ञात त्रुटि"
+    },
+    "internships": {
+      "title": "अनुशंसित इंटर्नशिप",
+      "found": "{count} मिलते-जुलते अवसर मिले",
+      "noRecommendations": "अभी तक कोई सुझाव नहीं। व्यक्तिगत इंटर्नशिप सुझाव देखने के लिए अपने कौशल चुनें और \"सुझाव प्राप्त करें\" पर क्लिक करें।",
+      "loading": "सुझाव लोड हो रहे हैं...",
+      "requiredSkills": "आवश्यक कौशल:",
+      "skillsToLearn": "सीखने योग्य कौशल:",
+      "match": "{score}% मैच",
+      "score": "स्कोर: {score}%"
+    },
+    "jobCard": {
+      "company": "कंपनी",
+      "location": "स्थान",
+      "stipend": "वजीफा",
+      "duration": "अवधि",
+      "companyEmoji": "🏢",
+      "locationEmoji": "📍",
+      "stipendEmoji": "💰",
+      "durationEmoji": "⏳"
+    },
+    "models": {
+      "tfidf": "TF-IDF",
+      "ann": "ANN"
+    },
+    "skills": [
+      "जावास्क्रिप्ट",
+      "रिएक्ट",
+      "नोड.जेएस",
+      "समस्या समाधान",
+      "पायथन",
+      "पांडास",
+      "मशीन लर्निंग",
+      "सांख्यिकी",
+      "फिगमा",
+      "UI/UX",
+      "प्रोटोटाइपिंग",
+      "रचनात्मकता",
+      "कंटेंट लेखन",
+      "SEO",
+      "सोशल मीडिया",
+      "विश्लेषण",
+      "नेटवर्किंग",
+      "सुरक्षा उपकरण",
+      "लिनक्स",
+      "विवरण पर ध्यान"
+    ],
+    "locations": [
+      "रिमोट",
+      "बैंगलोर",
+      "हैदराबाद",
+      "मुंबई",
+      "दिल्ली",
+      "चेन्नई",
+      "पुणे",
+      "गुड़गांव",
+      "कोलकाता"
+    ],
+    "durations": [
+      "1 महीना",
+      "3 महीने",
+      "6 महीने"
+    ]
+  }
+}

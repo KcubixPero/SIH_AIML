@@ -1,18 +1,21 @@
 import React from 'react'
 import { Intern, JobCard } from './JobCard';
+import { useTranslation } from '@/lib/useTranslation';
 
 interface InternshipsProps {
   recommendations: any[];
   isLoading: boolean;
+  language: 'en' | 'hi';
 }
 
-export const Internships = ({ recommendations, isLoading }: InternshipsProps) => {
+export const Internships = ({ recommendations, isLoading, language }: InternshipsProps) => {
+  const { t } = useTranslation(language);
   if (isLoading) {
     return (
       <div className="space-y-4 w-5xl">
         <div className="text-center py-8">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-2 text-muted-foreground">Loading recommendations...</p>
+          <p className="mt-2 text-muted-foreground">{t('internships.loading')}</p>
         </div>
       </div>
     );
@@ -22,7 +25,7 @@ export const Internships = ({ recommendations, isLoading }: InternshipsProps) =>
     return (
       <div className="space-y-4 w-5xl">
         <div className="text-center py-8">
-          <p className="text-muted-foreground">No recommendations yet. Select your skills and click "Get Recommendations" to see personalized internship suggestions.</p>
+          <p className="text-muted-foreground">{t('internships.noRecommendations')}</p>
         </div>
       </div>
     );
@@ -31,8 +34,8 @@ export const Internships = ({ recommendations, isLoading }: InternshipsProps) =>
   return (
     <div className="space-y-4 w-5xl">
       <div className="mb-4">
-        <h2 className="text-xl font-semibold">Recommended Internships</h2>
-        <p className="text-sm text-muted-foreground">Found {recommendations.length} matching opportunities</p>
+        <h2 className="text-xl font-semibold">{t('internships.title')}</h2>
+        <p className="text-sm text-muted-foreground">{t('internships.found', { count: recommendations.length })}</p>
       </div>
       {
         recommendations.slice(0, 5).map((rec, index) => (
@@ -40,6 +43,7 @@ export const Internships = ({ recommendations, isLoading }: InternshipsProps) =>
             intern={convertRecommendationToIntern(rec)} 
             key={`${rec.job_title || rec.role}-${index}`} 
             recommendation={rec}
+            language={language}
           />
         ))
       }
