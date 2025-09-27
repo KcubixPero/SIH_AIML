@@ -3,7 +3,7 @@ import { Intern, JobCard } from './JobCard';
 
 export const Internships = () => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 w-5xl">
       {
         internships.map(i => (
           <JobCard intern={i} key={i.title} />
