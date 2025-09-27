@@ -35,7 +35,7 @@ export const Internships = ({ recommendations, isLoading }: InternshipsProps) =>
         <p className="text-sm text-muted-foreground">Found {recommendations.length} matching opportunities</p>
       </div>
       {
-        recommendations.map((rec, index) => (
+        recommendations.slice(0, 5).map((rec, index) => (
           <JobCard 
             intern={convertRecommendationToIntern(rec)} 
             key={`${rec.job_title || rec.role}-${index}`} 

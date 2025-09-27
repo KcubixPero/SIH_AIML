@@ -33,33 +33,10 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [modelType, setModelType] = useState<'tfidf' | 'ann'>('tfidf');
 
-  // Load available skills and locations from API
+  // Use hardcoded skills and locations
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        const [skillsRes, locationsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/skills/'),
-          fetch('http://localhost:5000/api/locations/')
-        ]);
-        
-        if (skillsRes.ok) {
-          const skillsData = await skillsRes.json();
-          setAvailableSkills(skillsData.skills || []);
-        }
-        
-        if (locationsRes.ok) {
-          const locationsData = await locationsRes.json();
-          setAvailableLocations(locationsData.locations || []);
-        }
-      } catch (error) {
-        console.error('Error loading data:', error);
-        // Fallback to hardcoded data
-        setAvailableSkills(skills);
-        setAvailableLocations(filters.location);
-      }
-    };
-
-    loadData();
+    setAvailableSkills(skills);
+    setAvailableLocations(filters.location);
   }, []);
 
   const handleGetRecommendations = async () => {
