@@ -1,16 +1,68 @@
 import React from 'react'
 import { Intern, JobCard } from './JobCard';
 
-export const Internships = () => {
+interface InternshipsProps {
+  recommendations: any[];
+  isLoading: boolean;
+}
+
+export const Internships = ({ recommendations, isLoading }: InternshipsProps) => {
+  if (isLoading) {
+    return (
+      <div className="space-y-4 w-5xl">
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-2 text-muted-foreground">Loading recommendations...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (recommendations.length === 0) {
+    return (
+      <div className="space-y-4 w-5xl">
+        <div className="text-center py-8">
+          <p className="text-muted-foreground">No recommendations yet. Select your skills and click "Get Recommendations" to see personalized internship suggestions.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-4 w-5xl">
+      <div className="mb-4">
+        <h2 className="text-xl font-semibold">Recommended Internships</h2>
+        <p className="text-sm text-muted-foreground">Found {recommendations.length} matching opportunities</p>
+      </div>
       {
-        internships.map(i => (
-          <JobCard intern={i} key={i.title} />
+        recommendations.map((rec, index) => (
+          <JobCard 
+            intern={convertRecommendationToIntern(rec)} 
+            key={`${rec.job_title || rec.role}-${index}`} 
+            recommendation={rec}
+          />
         ))
       }
     </div>
   )
+}
+
+// Convert API recommendation to Intern format
+const convertRecommendationToIntern = (rec: any): Intern => {
+  return {
+    title: rec.job_title || rec.role || 'Internship Position',
+    description: rec.description || `Great opportunity at ${rec.company || 'a leading company'}`,
+    skills: rec.skills || rec.matched_skills || [],
+    company: rec.company || 'Company',
+    logo: undefined, // Could be added later
+    // Additional fields from ML model
+    similarity_score: rec.similarity_score,
+    missing_skills: rec.missing_skills,
+    location: rec.location,
+    stipend: rec.stipend,
+    duration: rec.duration,
+    score: rec.score
+  };
 }
 
 const internships: Intern[] = [
