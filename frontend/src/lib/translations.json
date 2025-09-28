@@ -87,7 +87,20 @@
       "1 month",
       "3 months",
       "6 months"
-    ]
+    ],
+    "feedback": {
+      "title": "Feedback",
+      "subtitle": "We value your feedback! Please let us know your thoughts about the internship platform.",
+      "nameLabel": "Name (optional)",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email (optional)",
+      "emailPlaceholder": "you@example.com",
+      "feedbackLabel": "Your Feedback",
+      "feedbackPlaceholder": "Share your experience, suggestions, or issues...",
+      "submitButton": "Submit Feedback",
+      "thankYouMessage": "Thank you for your feedback!",
+      "required": "*"
+    }
   },
   "hi": {
     "metadata": {
@@ -177,7 +190,20 @@
       "1 महीना",
       "3 महीने",
       "6 महीने"
-    ]
+    ],
+    "feedback": {
+      "title": "प्रतिक्रिया",
+      "subtitle": "हम आपकी प्रतिक्रिया की सराहना करते हैं! कृपया हमें इंटर्नशिप प्लेटफॉर्म के बारे में अपने विचार बताएं।",
+      "nameLabel": "नाम (वैकल्पिक)",
+      "namePlaceholder": "आपका नाम",
+      "emailLabel": "ईमेल (वैकल्पिक)",
+      "emailPlaceholder": "you@example.com",
+      "feedbackLabel": "आपकी प्रतिक्रिया",
+      "feedbackPlaceholder": "अपना अनुभव, सुझाव या समस्याएं साझा करें...",
+      "submitButton": "प्रतिक्रिया भेजें",
+      "thankYouMessage": "आपकी प्रतिक्रिया के लिए धन्यवाद!",
+      "required": "*"
+    }
   },
   "ta": {
     "metadata": {
@@ -267,7 +293,20 @@
       "1 மாதம்",
       "3 மாதங்கள்",
       "6 மாதங்கள்"
-    ]
+    ],
+    "feedback": {
+      "title": "கருத்து",
+      "subtitle": "உங்கள் கருத்தை நாங்கள் மதிக்கிறோம்! இன்டர்ன்ஷிப் தளத்தைப் பற்றி உங்கள் எண்ணங்களை எங்களுக்குத் தெரிவிக்கவும்.",
+      "nameLabel": "பெயர் (விருப்பமானது)",
+      "namePlaceholder": "உங்கள் பெயர்",
+      "emailLabel": "மின்னஞ்சல் (விருப்பமானது)",
+      "emailPlaceholder": "you@example.com",
+      "feedbackLabel": "உங்கள் கருத்து",
+      "feedbackPlaceholder": "உங்கள் அனுபவம், பரிந்துரைகள் அல்லது பிரச்சினைகளைப் பகிர்ந்து கொள்ளுங்கள்...",
+      "submitButton": "கருத்தை சமர்ப்பிக்கவும்",
+      "thankYouMessage": "உங்கள் கருத்துக்கு நன்றி!",
+      "required": "*"
+    }
   },
   "te": {
     "metadata": {
@@ -357,7 +396,20 @@
       "1 నెల",
       "3 నెలలు",
       "6 నెలలు"
-    ]
+    ],
+    "feedback": {
+      "title": "ఫీడ్‌బ్యాక్",
+      "subtitle": "మేము మీ ఫీడ్‌బ్యాక్‌ను విలువైనదిగా భావిస్తాము! ఇంటర్న్‌షిప్ ప్లాట్‌ఫారమ్ గురించి మీ ఆలోచనలను మాకు తెలియజేయండి.",
+      "nameLabel": "పేరు (ఐచ్ఛికం)",
+      "namePlaceholder": "మీ పేరు",
+      "emailLabel": "ఇమెయిల్ (ఐచ్ఛికం)",
+      "emailPlaceholder": "you@example.com",
+      "feedbackLabel": "మీ ఫీడ్‌బ్యాక్",
+      "feedbackPlaceholder": "మీ అనుభవం, సూచనలు లేదా సమస్యలను పంచుకోండి...",
+      "submitButton": "ఫీడ్‌బ్యాక్ సమర్పించండి",
+      "thankYouMessage": "మీ ఫీడ్‌బ्यాక్‌కు ధన్యవాదాలు!",
+      "required": "*"
+    }
   },
   "kn": {
     "metadata": {
@@ -447,7 +499,20 @@
       "1 ತಿಂಗಳು",
       "3 ತಿಂಗಳುಗಳು",
       "6 ತಿಂಗಳುಗಳು"
-    ]
+    ],
+    "feedback": {
+      "title": "ಪ್ರತಿಕ್ರಿಯೆ",
+      "subtitle": "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ನಾವು ಮೌಲ್ಯೀಕರಿಸುತ್ತೇವೆ! ಇಂಟರ್ನ್‌ಶಿಪ್ ಪ್ಲಾಟ್‌ಫಾರಮ್ ಬಗ್ಗೆ ನಿಮ್ಮ ಆಲೋಚನೆಗಳನ್ನು ನಮಗೆ ತಿಳಿಸಿ.",
+      "nameLabel": "ಹೆಸರು (ಐಚ್ಛಿಕ)",
+      "namePlaceholder": "ನಿಮ್ಮ ಹೆಸರು",
+      "emailLabel": "ಇಮೇಲ್ (ಐಚ್ಛಿಕ)",
+      "emailPlaceholder": "you@example.com",
+      "feedbackLabel": "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆ",
+      "feedbackPlaceholder": "ನಿಮ್ಮ ಅನುಭವ, ಸಲಹೆಗಳು ಅಥವಾ ಸಮಸ್ಯೆಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ...",
+      "submitButton": "ಪ್ರತಿಕ್ರಿಯೆ ಸಲ್ಲಿಸಿ",
+      "thankYouMessage": "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಗೆ ಧನ್ಯವಾದಗಳು!",
+      "required": "*"
+    }
   },
   "bh": {
     "metadata": {
@@ -537,7 +602,20 @@
       "1 महीना",
       "3 महीने",
       "6 महीने"
-    ]
+    ],
+    "feedback": {
+      "title": "प्रतिक्रिया",
+      "subtitle": "हम आपकी प्रतिक्रिया की सराहना करते हैं! कृपया हमें इंटर्नशिप प्लेटफॉर्म के बारे में अपने विचार बताएं।",
+      "nameLabel": "नाम (वैकल्पिक)",
+      "namePlaceholder": "आपका नाम",
+      "emailLabel": "ईमेल (वैकल्पिक)",
+      "emailPlaceholder": "you@example.com",
+      "feedbackLabel": "आपकी प्रतिक्रिया",
+      "feedbackPlaceholder": "अपना अनुभव, सुझाव या समस्याएं साझा करें...",
+      "submitButton": "प्रतिक्रिया भेजें",
+      "thankYouMessage": "आपकी प्रतिक्रिया के लिए धन्यवाद!",
+      "required": "*"
+    }
   },
   "gu": {
     "metadata": {
@@ -627,7 +705,20 @@
       "1 મહિનો",
       "3 મહિના",
       "6 મહિના"
-    ]
+    ],
+    "feedback": {
+      "title": "પ્રતિસાદ",
+      "subtitle": "અમે તમારા પ્રતિસાદને મૂલ્યવાન માનીએ છીએ! કૃપા કરીને ઇન્ટર્નશિપ પ્લેટફોર્મ વિશે તમારા વિચારો અમને જણાવો.",
+      "nameLabel": "નામ (વૈકલ્પિક)",
+      "namePlaceholder": "તમારું નામ",
+      "emailLabel": "ઇમેઇલ (વૈકલ્પિક)",
+      "emailPlaceholder": "you@example.com",
+      "feedbackLabel": "તમારો પ્રતિસાદ",
+      "feedbackPlaceholder": "તમારો અનુભવ, સૂચનો અથવા સમસ્યાઓ શેર કરો...",
+      "submitButton": "પ્રતિસાદ સબમિટ કરો",
+      "thankYouMessage": "તમારા પ્રતિસાદ માટે આભાર!",
+      "required": "*"
+    }
   },
   "pa": {
     "metadata": {
@@ -717,7 +808,20 @@
       "1 ਮਹੀਨਾ",
       "3 ਮਹੀਨੇ",
       "6 ਮਹੀਨੇ"
-    ]
+    ],
+    "feedback": {
+      "title": "ਫੀਡਬੈਕ",
+      "subtitle": "ਅਸੀਂ ਤੁਹਾਡੇ ਫੀਡਬੈਕ ਦੀ ਕਦਰ ਕਰਦੇ ਹਾਂ! ਕਿਰਪਾ ਕਰਕੇ ਇੰਟਰਨਸ਼ਿਪ ਪਲੇਟਫਾਰਮ ਬਾਰੇ ਆਪਣੇ ਵਿਚਾਰ ਸਾਨੂੰ ਦੱਸੋ।",
+      "nameLabel": "ਨਾਮ (ਵਿਕਲਪਿਕ)",
+      "namePlaceholder": "ਤੁਹਾਡਾ ਨਾਮ",
+      "emailLabel": "ਈਮੇਲ (ਵਿਕਲਪਿਕ)",
+      "emailPlaceholder": "you@example.com",
+      "feedbackLabel": "ਤੁਹਾਡਾ ਫੀਡਬੈਕ",
+      "feedbackPlaceholder": "ਆਪਣਾ ਤਜਰਬਾ, ਸੁਝਾਅ ਜਾਂ ਸਮੱਸਿਆਵਾਂ ਸਾਂਝੀਆਂ ਕਰੋ...",
+      "submitButton": "ਫੀਡਬੈਕ ਭੇਜੋ",
+      "thankYouMessage": "ਤੁਹਾਡੇ ਫੀਡਬੈਕ ਲਈ ਧੰਨਵਾਦ!",
+      "required": "*"
+    }
   },
   "bn": {
     "metadata": {
@@ -807,7 +911,20 @@
       "1 মাস",
       "3 মাস",
       "6 মাস"
-    ]
+    ],
+    "feedback": {
+      "title": "প্রতিক্রিয়া",
+      "subtitle": "আমরা আপনার প্রতিক্রিয়াকে মূল্যবান মনে করি! অনুগ্রহ করে ইন্টার্নশিপ প্ল্যাটফর্ম সম্পর্কে আপনার মতামত আমাদের জানান।",
+      "nameLabel": "নাম (ঐচ্ছিক)",
+      "namePlaceholder": "আপনার নাম",
+      "emailLabel": "ইমেইল (ঐচ্ছিক)",
+      "emailPlaceholder": "you@example.com",
+      "feedbackLabel": "আপনার প্রতিক্রিয়া",
+      "feedbackPlaceholder": "আপনার অভিজ্ঞতা, পরামর্শ বা সমস্যা শেয়ার করুন...",
+      "submitButton": "প্রতিক্রিয়া জমা দিন",
+      "thankYouMessage": "আপনার প্রতিক্রিয়ার জন্য ধন্যবাদ!",
+      "required": "*"
+    }
   },
   "or": {
     "metadata": {
@@ -897,6 +1014,19 @@
       "1 ମାସ",
       "3 ମାସ",
       "6 ମାସ"
-    ]
+    ],
+    "feedback": {
+      "title": "ପ୍ରତିକ୍ରିୟା",
+      "subtitle": "ଆମେ ଆପଣଙ୍କ ପ୍ରତିକ୍ରିୟାକୁ ମୂଲ୍ୟବାନ ମନେ କରୁଛୁ! ଦୟାକରି ଇଣ୍ଟର୍ନସିପ୍ ପ୍ଲାଟଫର୍ମ ବିଷୟରେ ଆପଣଙ୍କର ମତାମତ ଆମକୁ ଜଣାନ୍ତୁ।",
+      "nameLabel": "ନାମ (ବିକଳ୍ପ)",
+      "namePlaceholder": "ଆପଣଙ୍କର ନାମ",
+      "emailLabel": "ଇମେଲ୍ (ବିକଳ୍ପ)",
+      "emailPlaceholder": "you@example.com",
+      "feedbackLabel": "ଆପଣଙ୍କର ପ୍ରତିକ୍ରିୟା",
+      "feedbackPlaceholder": "ଆପଣଙ୍କର ଅନୁଭବ, ପରାମର୍ଶ ବା ସମସ୍ୟା ଶେୟାର କରନ୍ତୁ...",
+      "submitButton": "ପ୍ରତିକ୍ରିୟା ଦାଖଲ କରନ୍ତୁ",
+      "thankYouMessage": "ଆପଣଙ୍କର ପ୍ରତିକ୍ରିୟା ପାଇଁ ଧନ୍ୟବାଦ!",
+      "required": "*"
+    }
   }
 }
