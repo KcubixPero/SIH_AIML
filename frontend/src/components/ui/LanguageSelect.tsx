@@ -7,35 +7,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const LanguageSelect = () => {
   const { t } = useTranslation();
-  const [language, setLanguage] = useState("en");
-
-  // return (
-  //   <div className = "flex justify-end mb-4">
-  //     <div className="flex gap-2">
-  //       <button
-  //         onClick={() => changeLanguage('en')}
-  //         className={`px-3 py-1 rounded text-sm font-medium transition-colors ${language === 'en'
-  //             ? 'bg-primary text-primary-foreground'
-  //             : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-  //           }`}
-  //       >
-  //         {t('page.languageEnglish')}
-  //       </button>
-  //       <button
-  //         onClick={() => changeLanguage('hi')}
-  //         className={`px-3 py-1 rounded text-sm font-medium transition-colors ${language === 'hi'
-  //             ? 'bg-primary text-primary-foreground'
-  //             : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-  //           }`}
-  //       >
-  //         {t('page.languageHindi')}
-  //       </button>
-  //     </div>
-  //   </div>
-  // )
+  // const [language, setLanguage] = useState("en");
+  const { language, setLanguage } = useLanguage();
 
   return (
     <div>

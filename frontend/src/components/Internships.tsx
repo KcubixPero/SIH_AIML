@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Intern, JobCard } from './JobCard';
 import { useTranslation } from '@/lib/useTranslation';
 import translations from '@/lib/translations.json';
 import { createTranslationFunction } from '@/lib/utils';
 
 interface InternshipsProps {
-  recommendations: any[];
-  isLoading: boolean;
   language: 'en' | 'hi';
 }
 
-export const Internships = ({ recommendations, isLoading, language }: InternshipsProps) => {
+export const Internships = ({ language }: InternshipsProps) => {
+  const [recommendations, setRecommendations] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   // Create a translation function that uses the passed language
   const t = createTranslationFunction(language);
   if (isLoading) {
