@@ -50,7 +50,7 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
   const [availableSkills, setAvailableSkills] = useState<string[]>([]);
   const [availableLocations, setAvailableLocations] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   // Create a translation function that uses the passed language
   const t = createTranslationFunction(language);
 
@@ -103,32 +103,34 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
   };
 
   return (
-    <div className="w-5xl space-y-4">
-      <div className="flex gap-4 mb-6">
-        <Select value={selectedLocation} onValueChange={setSelectedLocation}>
-          <SelectTrigger className="w-[180px] min-h-10">
-            <SelectValue placeholder={t('filter.location')} />
-          </SelectTrigger>
-          <SelectContent>
-            {availableLocations.map(loc => (
-              <SelectItem key={loc} value={loc}>{loc}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+    <div className="w-full space-y-4">
+      <div className="flex max-md:flex-col gap-4 mb-6">
+        <div className="flex gap-4">
+          <Select value={selectedLocation} onValueChange={setSelectedLocation}>
+            <SelectTrigger className="w-1/2 md:w-[180px] min-h-10">
+              <SelectValue placeholder={t('filter.location')} />
+            </SelectTrigger>
+            <SelectContent>
+              {availableLocations.map(loc => (
+                <SelectItem key={loc} value={loc}>{loc}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
-        <Select value={selectedDuration} onValueChange={setSelectedDuration}>
-          <SelectTrigger className="w-[180px] min-h-10">
-            <SelectValue placeholder={t('filter.duration')} />
-          </SelectTrigger>
-          <SelectContent>
-            {translations[language].durations.map(d => (
-              <SelectItem key={d} value={d}>{d}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+          <Select value={selectedDuration} onValueChange={setSelectedDuration}>
+            <SelectTrigger className="w-1/2 md:w-[180px] min-h-10">
+              <SelectValue placeholder={t('filter.duration')} />
+            </SelectTrigger>
+            <SelectContent>
+              {translations[language].durations.map(d => (
+                <SelectItem key={d} value={d}>{d}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
         <div className="flex-1 flex gap-2">
-          <SkillsSelect 
+          <SkillsSelect
             selectedSkills={selectedSkills}
             onSkillsChange={setSelectedSkills}
             availableSkills={availableSkills}
@@ -137,7 +139,7 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
       </div>
 
       <div className="flex justify-center">
-        <Button 
+        <Button
           onClick={handleGetRecommendations}
           disabled={isLoading || selectedSkills.length === 0}
           className="px-8 py-2"
@@ -182,7 +184,7 @@ const SkillsSelect = ({ selectedSkills, onSkillsChange, availableSkills }: Skill
       <div className="flex-1 min-h-10 border rounded-lg p-2 flex flex-wrap gap-1 shadow-faded">
         {
           selectedSkills.map(s => (
-            <span 
+            <span
               key={s}
               className="px-2 h-6 text-xs bg-secondary text-secondary-foreground rounded-sm border border-border flex items-center gap-1"
             >
@@ -228,5 +230,3 @@ const SkillsSelect = ({ selectedSkills, onSkillsChange, availableSkills }: Skill
     </div>
   )
 }
-
- 

@@ -22,17 +22,17 @@ export default function InternshipsPage() {
   };
 
   return (
-    <div className="w-5xl mx-auto px-4 py-8 space-y-6">
+    <div className="max-w-5xl mx-auto px-4 py-8 space-y-6">
       <div className="flex justify-between my-4">
         <Button>{t('page.uploadResume')}</Button>
         <LanguageSelect />
       </div>
 
       <div className="text-center mt-12 mb-8">
-        <h1 className="text-3xl font-bold text-foreground mb-2">
+        <h1 className="text-3xl md:text-4xl leading-8 font-bold text-foreground mb-1 md:mb-2">
           {t('page.title')}
         </h1>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground max-md:text-sm">
           {t('page.subtitle')}
         </p>
       </div>

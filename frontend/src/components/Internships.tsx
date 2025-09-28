@@ -29,7 +29,7 @@ export const Internships = ({ recommendations, isLoading }: InternshipsProps) =>
   const t = createTranslationFunction(language);
   if (isLoading) {
     return (
-      <div className="space-y-4 w-5xl">
+      <div className="space-y-4 w-full">
         <div className="text-center py-8">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
           <p className="mt-2 text-muted-foreground">{t('internships.loading')}</p>
@@ -40,7 +40,7 @@ export const Internships = ({ recommendations, isLoading }: InternshipsProps) =>
 
   if (recommendations.length === 0) {
     return (
-      <div className="space-y-4 w-5xl">
+      <div className="space-y-4 w-full">
         <div className="text-center py-8">
           <p className="text-muted-foreground">{t('internships.noRecommendations')}</p>
         </div>
@@ -49,7 +49,7 @@ export const Internships = ({ recommendations, isLoading }: InternshipsProps) =>
   }
 
   return (
-    <div className="space-y-4 w-5xl">
+    <div className="space-y-4 w-full">
       <div className="mb-4">
         <h2 className="text-xl font-semibold">{t('internships.title')}</h2>
         <p className="text-sm text-muted-foreground">{t('internships.found', { count: recommendations.length })}</p>
