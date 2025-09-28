@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from './ui/button'
 import { XIcon, Search, Loader2 } from 'lucide-react'
-import { useTranslation } from '@/lib/useTranslation'
 import translations from '@/lib/translations.json'
 import { createTranslationFunction } from '@/lib/utils'
 
@@ -35,8 +34,6 @@ export const Filter = ({ onRecommendations, onLoading, language }: FilterProps) 
   const [availableSkills, setAvailableSkills] = useState<string[]>([]);
   const [availableLocations, setAvailableLocations] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [modelType, setModelType] = useState<'tfidf' | 'ann'>('tfidf');
-  const { t: tBase } = useTranslation();
   
   // Create a translation function that uses the passed language
   const t = createTranslationFunction(language);
@@ -61,7 +58,6 @@ export const Filter = ({ onRecommendations, onLoading, language }: FilterProps) 
         skills: selectedSkills,
         locations: selectedLocation ? [selectedLocation] : [],
         interests: [], // Could be added later
-        model_type: modelType,
         top_k: 10
       };
 

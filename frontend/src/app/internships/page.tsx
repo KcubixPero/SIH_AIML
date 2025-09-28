@@ -5,11 +5,12 @@ import { Filter } from "@/components/Filter";
 import { Internships } from "@/components/Internships";
 import { useTranslation } from "@/lib/useTranslation";
 import { Button } from '@/components/ui/button';
+import { LanguageSelect } from '@/components/ui/LanguageSelect';
 
 export default function page() {
   const [recommendations, setRecommendations] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { t, language, changeLanguage } = useTranslation();
+  const { t, language } = useTranslation();
 
   const handleRecommendations = (newRecommendations: any[]) => {
     setRecommendations(newRecommendations);
@@ -21,34 +22,12 @@ export default function page() {
 
   return (
     <div className="w-5xl mx-auto px-4 py-8 space-y-6">
-      <Button>{t('page.uploadResume')}</Button>
-      {/* Language Toggle */}
-      <div className="flex justify-end mb-4">
-        <div className="flex gap-2">
-          <button
-            onClick={() => changeLanguage('en')}
-            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-              language === 'en' 
-                ? 'bg-primary text-primary-foreground' 
-                : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-            }`}
-          >
-            {t('page.languageEnglish')}
-          </button>
-          <button
-            onClick={() => changeLanguage('hi')}
-            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-              language === 'hi' 
-                ? 'bg-primary text-primary-foreground' 
-                : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-            }`}
-          >
-            {t('page.languageHindi')}
-          </button>
-        </div>
+      <div className="flex justify-between my-4">
+        <Button>{t('page.uploadResume')}</Button>
+        <LanguageSelect />
       </div>
 
-      <div className="text-center mb-8">
+      <div className="text-center mt-12 mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-2">
           {t('page.title')}
         </h1>
@@ -56,14 +35,14 @@ export default function page() {
           {t('page.subtitle')}
         </p>
       </div>
-      
-      <Filter 
+
+      <Filter
         onRecommendations={handleRecommendations}
         onLoading={handleLoading}
         language={language}
       />
-      
-      <Internships 
+
+      <Internships
         recommendations={recommendations}
         isLoading={isLoading}
         language={language}
