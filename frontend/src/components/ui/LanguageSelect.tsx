@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useTranslation } from '@/lib/useTranslation';
+import React from 'react'
 import {
   Select,
   SelectContent,
@@ -7,11 +6,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useLanguage } from '@/contexts/LanguageContext';
+import { Language, useLanguage } from '@/contexts/LanguageContext';
 
 export const LanguageSelect = () => {
-  const { t } = useTranslation();
-  // const [language, setLanguage] = useState("en");
   const { language, setLanguage } = useLanguage();
 
   return (
@@ -24,7 +21,7 @@ export const LanguageSelect = () => {
             {
               Object.keys(languages).map(k => (
                 <SelectItem key={k} value={k}>
-                  {languages[k]}
+                  {languages[k as Language]}
                 </SelectItem>
               ))
             }
@@ -34,7 +31,7 @@ export const LanguageSelect = () => {
   )
 }
 
-const languages: Record<string, string> = {
+const languages: Record<Language, string> = {
   "en": "English",
   "hi": "Hindi"
 }

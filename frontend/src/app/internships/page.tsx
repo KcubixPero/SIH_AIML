@@ -1,18 +1,19 @@
 "use client"
 
 import { useState } from 'react';
-import { Filter } from "@/components/Filter";
+import { Filter, Recommendation } from "@/components/Filter";
 import { Internships } from "@/components/Internships";
 import { useTranslation } from "@/lib/useTranslation";
 import { Button } from '@/components/ui/button';
 import { LanguageSelect } from '@/components/ui/LanguageSelect';
 
-export default function page() {
-  const [recommendations, setRecommendations] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const { t, language } = useTranslation();
 
-  const handleRecommendations = (newRecommendations: any[]) => {
+export default function InternshipsPage() {
+  const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
+
+  const handleRecommendations = (newRecommendations: Recommendation[]) => {
     setRecommendations(newRecommendations);
   };
 
@@ -39,13 +40,11 @@ export default function page() {
       <Filter
         onRecommendations={handleRecommendations}
         onLoading={handleLoading}
-        language={language}
       />
 
       <Internships
         recommendations={recommendations}
         isLoading={isLoading}
-        language={language}
       />
     </div>
   )

@@ -10,10 +10,10 @@ export function cn(...inputs: ClassValue[]) {
 export const createTranslationFunction = (language: 'en' | 'hi') => {
   return (key: string, params?: Record<string, string | number>): string => {
     const keys = key.split('.');
-    let value: any = translations[language];
+    let value: unknown = translations[language];
     
     for (const k of keys) {
-      value = value?.[k];
+      value = (value as Record<string, string>)[k];
     }
     
     if (typeof value !== 'string') {

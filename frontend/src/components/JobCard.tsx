@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import React from 'react'
-import { useTranslation } from '@/lib/useTranslation';
-import translations from '@/lib/translations.json';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { createTranslationFunction } from '@/lib/utils';
 
 export interface Intern {
@@ -21,11 +20,10 @@ export interface Intern {
 
 interface JobCardProps {
   intern: Intern;
-  recommendation?: any;
-  language?: 'en' | 'hi';
 }
 
-export const JobCard = ({ intern, recommendation, language = 'en' }: JobCardProps) => {
+export const JobCard = ({ intern }: JobCardProps) => {
+  const { language } = useLanguage();
   // Create a translation function that uses the passed language
   const t = createTranslationFunction(language);
   return (

@@ -18,16 +18,32 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from './ui/button'
 import { XIcon, Search, Loader2 } from 'lucide-react'
+import { useLanguage } from '@/contexts/LanguageContext'
 import translations from '@/lib/translations.json'
 import { createTranslationFunction } from '@/lib/utils'
 
-interface FilterProps {
-  onRecommendations: (recommendations: any[]) => void;
-  onLoading: (loading: boolean) => void;
-  language: 'en' | 'hi';
+export interface Recommendation {
+  job_title?: string;
+  role?: string;
+  description?: string;
+  skills?: string[];
+  matched_skills?: string[];
+  company?: string;
+  similarity_score?: number;
+  missing_skills?: string[];
+  location?: string;
+  stipend?: string;
+  duration?: string;
+  score?: number;
 }
 
-export const Filter = ({ onRecommendations, onLoading, language }: FilterProps) => {
+interface FilterProps {
+  onRecommendations: (recommendations: Recommendation[]) => void;
+  onLoading: (loading: boolean) => void;
+}
+
+export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
+  const { language } = useLanguage();
   const [selectedLocation, setSelectedLocation] = useState<string>("");
   const [selectedDuration, setSelectedDuration] = useState<string>("");
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
@@ -116,7 +132,6 @@ export const Filter = ({ onRecommendations, onLoading, language }: FilterProps) 
             selectedSkills={selectedSkills}
             onSkillsChange={setSelectedSkills}
             availableSkills={availableSkills}
-            language={language}
           />
         </div>
       </div>
@@ -148,10 +163,10 @@ interface SkillsSelectProps {
   selectedSkills: string[];
   onSkillsChange: (skills: string[]) => void;
   availableSkills: string[];
-  language: 'en' | 'hi';
 }
 
-const SkillsSelect = ({ selectedSkills, onSkillsChange, availableSkills, language }: SkillsSelectProps) => {
+const SkillsSelect = ({ selectedSkills, onSkillsChange, availableSkills }: SkillsSelectProps) => {
+  const { language } = useLanguage();
   // Create a translation function that uses the passed language
   const t = createTranslationFunction(language);
   const handleSkillSelect = (skill: string) => {

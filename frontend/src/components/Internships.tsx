@@ -1,16 +1,30 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Intern, JobCard } from './JobCard';
-import { useTranslation } from '@/lib/useTranslation';
-import translations from '@/lib/translations.json';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { createTranslationFunction } from '@/lib/utils';
 
-interface InternshipsProps {
-  language: 'en' | 'hi';
+interface Recommendation {
+  job_title?: string;
+  role?: string;
+  description?: string;
+  skills?: string[];
+  matched_skills?: string[];
+  company?: string;
+  similarity_score?: number;
+  missing_skills?: string[];
+  location?: string;
+  stipend?: string;
+  duration?: string;
+  score?: number;
 }
 
-export const Internships = ({ language }: InternshipsProps) => {
-  const [recommendations, setRecommendations] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+interface InternshipsProps {
+  recommendations: Recommendation[];
+  isLoading: boolean;
+}
+
+export const Internships = ({ recommendations, isLoading }: InternshipsProps) => {
+  const { language } = useLanguage();
   // Create a translation function that uses the passed language
   const t = createTranslationFunction(language);
   if (isLoading) {
@@ -44,9 +58,7 @@ export const Internships = ({ language }: InternshipsProps) => {
         recommendations.slice(0, 5).map((rec, index) => (
           <JobCard 
             intern={convertRecommendationToIntern(rec, language)} 
-            key={`${rec.job_title || rec.role}-${index}`} 
-            recommendation={rec}
-            language={language}
+            key={`${rec.job_title ?? rec.role ?? 'unknown'}-${index}`} 
           />
         ))
       }
@@ -55,7 +67,7 @@ export const Internships = ({ language }: InternshipsProps) => {
 }
 
 // Convert API recommendation to Intern format
-const convertRecommendationToIntern = (rec: any, language: 'en' | 'hi' = 'en'): Intern => {
+const convertRecommendationToIntern = (rec: Recommendation, language: 'en' | 'hi' = 'en'): Intern => {
   // Create a translation function that uses the passed language
   const t = createTranslationFunction(language);
   return {
@@ -64,7 +76,6 @@ const convertRecommendationToIntern = (rec: any, language: 'en' | 'hi' = 'en'): 
     skills: rec.skills || rec.matched_skills || [],
     company: rec.company || t('jobCard.defaultCompany'),
     logo: undefined, // Could be added later
-    // Additional fields from ML model
     similarity_score: rec.similarity_score,
     missing_skills: rec.missing_skills,
     location: rec.location,
@@ -73,44 +84,3 @@ const convertRecommendationToIntern = (rec: any, language: 'en' | 'hi' = 'en'): 
     score: rec.score
   };
 }
-
-const internships: Intern[] = [
-  {
-    title: "Software Engineering Intern",
-    description: "Build scalable web apps with our team.",
-    skills: ["JavaScript", "React", "Node.js", "Problem Solving"],
-    company: "TechNova",
-    // No logo for this one
-  },
-  {
-    title: "Data Science Intern",
-    description: "Analyze data and build predictive models.",
-    skills: ["Python", "Pandas", "Machine Learning", "Statistics"],
-    company: "DataWiz",
-    // Using a company logo (example: a generic data logo)
-    logo: "https://dummyimage.com/80x80/cccccc/000000&text=D"
-  },
-  {
-    title: "Product Design Intern",
-    description: "Create user-friendly interfaces with designers.",
-    skills: ["Figma", "UI/UX", "Prototyping", "Creativity"],
-    company: "Designify",
-    // Using a character image with company initial "D"
-    logo: "https://dummyimage.com/80x80/cccccc/000000&text=D"
-  },
-  {
-    title: "Marketing Intern",
-    description: "Assist with campaigns and content creation.",
-    skills: ["Content Writing", "SEO", "Social Media", "Analytics"],
-    company: "MarketMinds",
-    // No logo for this one
-  },
-  {
-    title: "Cybersecurity Intern",
-    description: "Help monitor and secure our systems.",
-    skills: ["Networking", "Security Tools", "Linux", "Attention to Detail"],
-    company: "SecureNet",
-    // Using a character image with company initial "S"
-    logo: "https://dummyimage.com/80x80/cccccc/000000&text=N"
-  }
-];

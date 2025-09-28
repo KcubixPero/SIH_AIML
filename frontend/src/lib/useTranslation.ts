@@ -1,18 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import translations from './translations.json';
 
-type Language = 'en' | 'hi';
 type TranslationKey = string;
 
-export const useTranslation = (defaultLanguage: Language = 'en') => {
-  const [language, setLanguage] = useState<Language>(defaultLanguage);
+export const useTranslation = () => {
+  const { language } = useLanguage();
 
   const t = (key: TranslationKey, params?: Record<string, string | number>): string => {
     const keys = key.split('.');
-    let value: any = translations[language];
+    let value: unknown = translations[language];
     
     for (const k of keys) {
-      value = value?.[k];
+      value = (value as Record<string, string>)[k];
     }
     
     if (typeof value !== 'string') {
@@ -29,23 +28,9 @@ export const useTranslation = (defaultLanguage: Language = 'en') => {
     return value;
   };
 
-  const changeLanguage = (newLanguage: Language) => {
-    setLanguage(newLanguage);
-    localStorage.setItem('preferred-language', newLanguage);
-  };
-
-  // Load saved language preference on mount
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('preferred-language') as Language;
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'hi')) {
-      setLanguage(savedLanguage);
-    }
-  }, []);
-
   return {
     t,
     language,
-    changeLanguage,
     isEnglish: language === 'en',
     isHindi: language === 'hi'
   };
