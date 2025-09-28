@@ -33,5 +33,13 @@ export const LanguageSelect = () => {
 
 const languages: Record<Language, string> = {
   "en": "English",
-  "hi": "Hindi"
+  "hi": "हिंदी",
+  "ta": "தமிழ்",
+  "te": "తెలుగు",
+  "kn": "ಕನ್ನಡ",
+  "bh": "भोजपुरी",
+  "gu": "ગુજરાતી",
+  "pa": "ਪੰਜਾਬੀ",
+  "bn": "বাংলা",
+  "or": "ଓଡ଼ିଆ"
 }

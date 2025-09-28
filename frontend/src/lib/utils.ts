@@ -1,13 +1,14 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import translations from './translations.json';
+import { Language } from "@/contexts/LanguageContext";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
 // Helper function to create a translation function for a specific language
-export const createTranslationFunction = (language: 'en' | 'hi') => {
+export const createTranslationFunction = (language: Language) => {
   return (key: string, params?: Record<string, string | number>): string => {
     const keys = key.split('.');
     let value: unknown = translations[language];

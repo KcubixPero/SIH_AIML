@@ -1,6 +1,6 @@
 import React from 'react'
 import { Intern, JobCard } from './JobCard';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage, Language } from '@/contexts/LanguageContext';
 import { createTranslationFunction } from '@/lib/utils';
 
 interface Recommendation {
@@ -67,7 +67,7 @@ export const Internships = ({ recommendations, isLoading }: InternshipsProps) =>
 }
 
 // Convert API recommendation to Intern format
-const convertRecommendationToIntern = (rec: Recommendation, language: 'en' | 'hi' = 'en'): Intern => {
+const convertRecommendationToIntern = (rec: Recommendation, language: Language = 'en'): Intern => {
   // Create a translation function that uses the passed language
   const t = createTranslationFunction(language);
   return {
