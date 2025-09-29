@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {
   Select,
   SelectContent,
@@ -16,8 +16,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import { Button } from './ui/button'
-import { XIcon, Search, Loader2 } from 'lucide-react'
+import { XIcon, Search, Loader2, Mic } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import translations from '@/lib/translations.json'
 import { createTranslationFunction } from '@/lib/utils'
@@ -136,6 +144,8 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
             availableSkills={availableSkills}
           />
         </div>
+
+        <VoiceInput t={t} />
       </div>
 
       <div className="flex justify-center">
@@ -160,6 +170,96 @@ export const Filter = ({ onRecommendations, onLoading }: FilterProps) => {
     </div>
   )
 }
+
+
+
+const VoiceInput = ({ t }: { t: (key: string) => string }) => {
+  const words = t('voiceInput.example').split(" ");
+  const [displayedWords, setDisplayedWords] = useState<string[]>(words);
+  const [animating, setAnimating] = useState(false);
+  const timeouts = useRef<NodeJS.Timeout[]>([]);
+
+  // Start animation when dialog opens
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      setDisplayedWords([]);
+      setAnimating(true);
+      let currentIndex = 0;
+      const showNextWord = () => {
+        if (currentIndex < words.length) {
+          setDisplayedWords((prev) => [...prev, words[currentIndex]]);
+          currentIndex++;
+          // Random delay between 200ms and 1800ms for natural effect
+          const delay = 200 + Math.random() * 1600;
+          const timeout = setTimeout(showNextWord, delay);
+          timeouts.current.push(timeout);
+        } else {
+          setAnimating(false);
+        }
+      };
+      showNextWord();
+      return () => {
+        // Cleanup on unmount or dialog close
+        timeouts.current.forEach(clearTimeout);
+        timeouts.current = [];
+      };
+    } else {
+      // If dialog closes, cleanup and reset
+      setDisplayedWords([]);
+      setAnimating(false);
+      timeouts.current.forEach(clearTimeout);
+      timeouts.current = [];
+    }
+  }, [open]);
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button className="rounded-full size-10 cursor-pointer">
+          <Mic className="size-5" />
+        </Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>
+            {t('voiceInput.title')}
+          </DialogTitle>
+          <div className="border my-4 p-2 rounded-lg min-h-[2.5rem] bg-black/5 transition-colors">
+            <span className="text-muted-foreground text-xs block mb-1">
+              {t('voiceInput.label')}
+            </span>
+            <span className="block text-base">
+              {displayedWords.map((word, i) => (
+                <span
+                  key={i}
+                  className="inline-block animate-fade-in"
+                  style={{
+                    animation: "fadeIn 0.4s",
+                    marginRight: "0.5ch",
+                  }}
+                >
+                  {word}
+                </span>
+              ))}
+              {animating && (
+                <span className="inline-block animate-pulse text-muted-foreground">|</span>
+              )}
+            </span>
+            <style jsx>{`
+              @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(0.5em);}
+                to { opacity: 1; transform: translateY(0);}
+              }
+            `}</style>
+          </div>
+          <Mic size={40} className="mx-auto my-4" />
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 interface SkillsSelectProps {
   selectedSkills: string[];
