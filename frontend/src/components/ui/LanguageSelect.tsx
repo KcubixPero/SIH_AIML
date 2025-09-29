@@ -14,7 +14,7 @@ export const LanguageSelect = () => {
   return (
     <div>
       <Select value={language} onValueChange={setLanguage}>
-          <SelectTrigger className="w-[180px] min-h-10">
+          <SelectTrigger className="w-[180px] min-h-10 border-none">
             <SelectValue placeholder={"Select language"} />
           </SelectTrigger>
           <SelectContent>
